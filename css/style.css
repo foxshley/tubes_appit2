@@ -164,6 +164,10 @@ footer {
     color: white;    
 }
 
+.title {
+    margin-top: 5rem;
+}
+
 @keyframes oscillate {
     0% {
       transform: translateY(-10px);

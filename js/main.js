@@ -10,6 +10,30 @@ document.addEventListener('DOMContentLoaded', function() {
         togglerTarget.classList.toggle('collapse');
     });
 
+    // Modal setup
+    var modals        = document.querySelectorAll('*[data-toggle="modal"]');
+    console.log(modals);
+    Array.prototype.forEach.call(modals, function(modal) {
+       modal.addEventListener('click', function(e) {
+           var targetElement = document.querySelector(e.target.dataset.target);
+           targetElement.classList.add('show');
+           targetElement.removeAttribute('aria-hidden');
+           targetElement.setAttribute('aria-modal', true);
+           targetElement.style.display = 'block';
+       });
+    });
+    var modalsDismiss = document.querySelectorAll('.modal-dialog [data-dismiss="modal"]');
+    Array.prototype.forEach.call(modalsDismiss, function(modal) {
+        modal.addEventListener('click', function(e) {
+            var targetElement = document.querySelector('*[aria-modal="true"]');
+            targetElement.classList.remove('show');
+            targetElement.style.display = 'none';
+            targetElement.removeAttribute('aria-modal');
+            targetElement.setAttribute('aria-hidden', true);
+        });
+     });
+
+    // Scroll animation setup
     var product       = document.querySelector('#product');
     var testimoni     = document.querySelector('#testimoni');
     
@@ -23,13 +47,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Reveal products
-        if (this.scrollY > product.offsetTop - 350) {
-            product.classList.add('scrolled');
+        if(product) {
+            if (this.scrollY > product.offsetTop - 350) {
+                product.classList.add('scrolled');
+            }
         }
 
         // Reveal testimonies
-        if (this.scrollY > testimoni.offsetTop - 400) {
-            testimoni.classList.add('scrolled');
+        if(testimoni) {
+            if (this.scrollY > testimoni.offsetTop - 400) {
+                testimoni.classList.add('scrolled');
+            }
         }
     });
 });

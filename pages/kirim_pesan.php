@@ -33,7 +33,8 @@
         // Kembali ke halaman sebelumnya dan tampilkan error
         if(!empty($errors)) {
             $_SESSION['errors'] = $errors;
-            header('location: '.BASE_URL.'#contact');
+            // header('location: '.BASE_URL.'#contact');
+            echo '<script>window.location="/#contact"</script>';
             exit();
         }
 
