@@ -37,6 +37,12 @@ function scrollDown() {
     var elem = document.querySelector('scroll-down');
 }
 
+function kirimData(e) {
+    e.preventDefault();
+    if (validasiNama() && validasiEmail() && validasiSubjek() && validasiPesan())
+        document.forms['contact'].submit();
+}
+
 
 //-----------------------------------------------------------
 //              Kumpulan Fungsi Validasi
@@ -46,11 +52,11 @@ function scrollDown() {
 function validasi() {
     var nama   = document.getElementById("nama").value;
     var email  = document.getElementById("email").value;
-    var alamat = document.getElementById("alamat").value;
-    var telp   = document.getElementById("telp").value;
+    var subjek = document.getElementById("subjek").value;
+    var pesan  = document.getElementById("telp").value;
     
-    if((nama != "") && (email != "") && (alamat != "")) {
-        if(!alphabet(nama, 'Nama harus huruf semua!!!') || !telepon(telp, 'Telepon harus angka semua!!!'))
+    if((nama != "") && (email != "") && (subjek != "") && (pesan != "")) {
+        if(!alphabet(nama, 'Nama harus huruf semua!!!'))
             return false;
 
         return true;
@@ -61,28 +67,93 @@ function validasi() {
     }
 }
 
-// Validasi huruf
-function alphabet(nilai, pesan) {
-    var alphaExp = /^[a-zA-Z]+[0-9]*$/;
+function validasiHuruf(nilai) {
+    var alphaExp = /^[a-zA-Z]+$/;
 
-    if(nilai.match(alphaExp)) {
+    if(alphaExp.test(nilai)) {
         return true;
     }
-    else {
-        alert(pesan);
-        return false;
-    }
+
+    return false;
 }
 
-// Validasi nomor telepon
-function telepon(nilai, pesan) {
-    var phoneExp = /^[0-9]+$/;
+function validasiNama() {
+    let element  = document.querySelector('#nama');
+    let errorMsg = document.querySelector('#namaError');
 
-    if(nilai.match(phoneExp)) {
-        return true;
-    }
-    else {
-        alert(pesan);
+    if (element.value == "") {
+        errorMsg.textContent   = 'Nama harus diisi!';
+        errorMsg.style.display = 'block';
+
         return false;
     }
+    else if (!validasiHuruf(element.value)) {
+        errorMsg.textContent   = 'Nama harus berupa huruf!';
+        errorMsg.style.display = 'block';
+
+        return false;
+    }
+
+    errorMsg.textContent   = '';
+    errorMsg.style.display = 'none';
+
+    return true;
+}
+
+function validasiEmail() {
+    let element  = document.querySelector('#email');
+    let errorMsg = document.querySelector('#emailError');
+    var regex    = /^[a-zA-z0-9_.]+@[a-zA-z0-9-]+\.[a-zA-Z0-9-.]+$/;
+
+    if (element.value == "") {
+        errorMsg.textContent   = 'Email harus diisi!';
+        errorMsg.style.display = 'block';
+
+        return false;
+    }
+    else if (!regex.test(element.value)) {
+        errorMsg.textContent   = 'Email tidak valid!';
+        errorMsg.style.display = 'block';
+
+        return false;
+    }
+    
+    errorMsg.textContent   = '';
+    errorMsg.style.display = 'none';
+    
+    return true;
+}
+
+function validasiSubjek() {
+    let element  = document.querySelector('#subjek');
+    let errorMsg = document.querySelector('#subjekError');
+
+    if (element.value == "") {
+        errorMsg.textContent   = 'Subjek harus diisi!';
+        errorMsg.style.display = 'block';
+
+        return false;
+    }
+    
+    errorMsg.textContent   = '';
+    errorMsg.style.display = 'none';
+
+    return true;
+}
+
+function validasiPesan() {
+    let element  = document.querySelector('#pesan');
+    let errorMsg = document.querySelector('#pesanError');
+
+    if (element.value == "") {
+        errorMsg.textContent   = 'Pesan harus diisi!';
+        errorMsg.style.display = 'block';
+
+        return false;
+    }
+    
+    errorMsg.textContent   = '';
+    errorMsg.style.display = 'none';
+
+    return true;
 }

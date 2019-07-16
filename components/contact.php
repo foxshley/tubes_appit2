@@ -30,24 +30,28 @@
             </div>
             <div class="col-md-6">
                 <h3 class="mb-4">Kontak Kami</h3>
-                <form action="/kirim_pesan">
+                <form action="/kirim_pesan" method="POST" name="contact">
                     <div class="form-group">
                         <label for="nama">Nama Lengkap</label>
-                        <input type="text" class="form-control" name="nama" id="nama">
+                        <input type="text" class="form-control" name="nama" id="nama" onblur="validasiNama();">
+                        <small id="namaError" class="form-text text-muted" style="color: red; display: none;"></small>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" name="email" id="email">
+                        <input type="email" class="form-control" name="email" id="email" onblur="validasiEmail();">
+                        <small id="emailError" class="form-text text-muted" style="color: red; display: none;"></small>
                     </div>
                     <div class="form-group">
                         <label for="nama">Subjek</label>
-                        <input type="text" class="form-control" name="subjek" id="subjek">
+                        <input type="text" class="form-control" name="subjek" id="subjek" onblur="validasiSubjek()">
+                        <small id="subjekError" class="form-text text-muted" style="display: none;"></small>
                     </div>
                     <div class="form-group">
                         <label for="pesan">Pesan Anda</label>
-                        <textarea class="form-control" id="pesan" name="pesan" rows="5"></textarea>
+                        <textarea class="form-control" id="pesan" name="pesan" rows="5" onblur="validasiPesan()"></textarea>
+                        <small id="pesanError" class="form-text text-muted" style="color: red; display: none;"></small>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-lg" onclick="void()">Kirim</button>
+                    <button type="submit" class="btn btn-primary btn-lg" onclick="kirimData(event)">Kirim</button>
                 </form>
             </div>
         </div>
