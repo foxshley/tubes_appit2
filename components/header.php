@@ -5,11 +5,11 @@
         <video autoplay muted loop poster="https://dummyimage.com/900x400/000/fff">    
             <source src="hero.mp4" type="video/mp4">
         </video>
-        <div class="container text-white">
+        <div class="container text-white d-flex justify-content-center align-items-center">
             <div class="caption">
-                <h1 class="display-4">Jasa Web Aplikasi IT 2</h1>
-                <p class="lead">Selamat datang di Website Jasa Web</p>
-                <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+                <h1 class="display-4">Buat Website Anda Sekarang</h1>
+                <p class="lead">Terpercaya, cepat dan dapat diandalkan.</p>
+                <p>Di <?= APP_NAME ?> membangun website tanpa kompromi dengan kualitas sangat bagus, handal, dan memanjakan mata.</p>
             </div>
         </div>
     </div>

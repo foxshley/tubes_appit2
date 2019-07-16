@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     var product       = document.querySelector('#product');
+    var testimoni     = document.querySelector('#testimoni');
     
     window.addEventListener("scroll", function(e) {
         // Navbar transparent to opaque
@@ -22,8 +23,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Reveal products
-        if (this.scrollY > product.scrollTop + 430) {
+        if (this.scrollY > product.offsetTop - 350) {
             product.classList.add('scrolled');
+        }
+
+        // Reveal testimonies
+        if (this.scrollY > testimoni.offsetTop - 400) {
+            testimoni.classList.add('scrolled');
         }
     });
 });
@@ -47,25 +53,6 @@ function kirimData(e) {
 //-----------------------------------------------------------
 //              Kumpulan Fungsi Validasi
 //-----------------------------------------------------------
-
-// Fungsi utama
-function validasi() {
-    var nama   = document.getElementById("nama").value;
-    var email  = document.getElementById("email").value;
-    var subjek = document.getElementById("subjek").value;
-    var pesan  = document.getElementById("telp").value;
-    
-    if((nama != "") && (email != "") && (subjek != "") && (pesan != "")) {
-        if(!alphabet(nama, 'Nama harus huruf semua!!!'))
-            return false;
-
-        return true;
-    }
-    else {
-        alert('Anda harus mengisi data dengan lengkap!');
-        return false;
-    }
-}
 
 function validasiHuruf(nilai) {
     var alphaExp = /^[a-zA-Z]+$/;

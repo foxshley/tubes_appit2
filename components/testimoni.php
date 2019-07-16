@@ -10,7 +10,9 @@
           <img class="card-img-top" src="img/tes1.png">
           <div class="card-body">
             <h4 class="Card-title">John Doe</h4>
-            <p class="card-text">Website Cepat dikerjakan dan sesuai permintaan</p>
+            <blockquote class="blockquote">
+              <p class="card-text">"Websitenya cepat dikerjakan dan sesuai permintaan."</p>
+            </blockquote>
           </div>
         </div>
       </div>
@@ -19,7 +21,9 @@
           <img class="card-img-top" src="img/tes2.png">
           <div class="card-body">
             <h4 class="Card-title">Mary Jo</h4>
-            <p class="card-text">Tanggapannya cepat dan hasilnya memuaskan</p>
+            <blockquote class="blockquote">
+              <p class="card-text">"Responnya cepat dan hasilnya memuaskan."</p>
+            </blockquote>
           </div>
         </div>
       </div>
@@ -28,7 +32,9 @@
           <img class="card-img-top" src="img/tes3.png">
           <div class="card-body">
             <h4 class="Card-title">Phil Ho</h4>
-            <p class="card-text">Terpercaya,Harga terjangkau</p>
+            <blockquote class="blockquote">
+              <p class="card-text">"Terpercaya dan harganya terjangkau."</p>
+            </blockquote>
           </div>
         </div>
       </div>

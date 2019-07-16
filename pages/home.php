@@ -1,3 +1,5 @@
+<?php defined('BASE_URL') OR exit('No direct script access allowed'); ?>
+
 <?php include("components/navbar.php"); ?>
 
 <?php include("components/header.php"); ?>

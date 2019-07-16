@@ -31,25 +31,42 @@
             <div class="col-md-6">
                 <h3 class="mb-4">Kontak Kami</h3>
                 <form action="/kirim_pesan" method="POST" name="contact">
+                    <input type="hidden" name="kirim" value="true" />
                     <div class="form-group">
                         <label for="nama">Nama Lengkap</label>
                         <input type="text" class="form-control" name="nama" id="nama" onblur="validasiNama();">
-                        <small id="namaError" class="form-text text-muted" style="color: red; display: none;"></small>
+                        <?php if(isset($_SESSION['errors']['nama'])) { ?>
+                            <small id="namaError" class="form-text text-muted" style="display: block;"><?= $_SESSION['errors']['nama'] ?></small>
+                        <?php } else { ?>
+                            <small id="namaError" class="form-text text-muted" style="display: none;"></small>
+                        <?php } ?>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" class="form-control" name="email" id="email" onblur="validasiEmail();">
-                        <small id="emailError" class="form-text text-muted" style="color: red; display: none;"></small>
+                        <?php if(isset($_SESSION['errors']['email'])) { ?>
+                            <small id="emailError" class="form-text text-muted" style="display: block;"><?= $_SESSION['errors']['email'] ?></small>
+                        <?php } else { ?>
+                            <small id="emailError" class="form-text text-muted" style="display: none;"></small>
+                        <?php } ?>                    
                     </div>
                     <div class="form-group">
                         <label for="nama">Subjek</label>
                         <input type="text" class="form-control" name="subjek" id="subjek" onblur="validasiSubjek()">
-                        <small id="subjekError" class="form-text text-muted" style="display: none;"></small>
+                        <?php if(isset($_SESSION['errors']['subjek'])) { ?>
+                            <small id="subjekError" class="form-text text-muted" style="display: block;"><?= $_SESSION['errors']['subjek'] ?></small>
+                        <?php } else { ?>
+                            <small id="subjekError" class="form-text text-muted" style="display: none;"></small>
+                        <?php } ?>                    
                     </div>
                     <div class="form-group">
                         <label for="pesan">Pesan Anda</label>
                         <textarea class="form-control" id="pesan" name="pesan" rows="5" onblur="validasiPesan()"></textarea>
-                        <small id="pesanError" class="form-text text-muted" style="color: red; display: none;"></small>
+                        <?php if(isset($_SESSION['errors']['pesan'])) { ?>
+                            <small id="pesanError" class="form-text text-muted" style="display: block;"><?= $_SESSION['errors']['pesan'] ?></small>
+                        <?php } else { ?>
+                            <small id="pesanError" class="form-text text-muted" style="display: none;"></small>
+                        <?php } ?>                    
                     </div>
                     <button type="submit" class="btn btn-primary btn-lg" onclick="kirimData(event)">Kirim</button>
                 </form>
