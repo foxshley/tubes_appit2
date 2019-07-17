@@ -19,7 +19,7 @@
     </div>
     <div class="row">
         <div class="col-5 offset-2">
-            <form>
+            <form name="konfirmasi">
                 <fieldset>
                     <?php if($produk == "Toko Online") { ?>
                         <?php if($paket == "Basic") { ?>
@@ -55,16 +55,18 @@
                     </div>
                     <?php if($produk == "Custom") { ?>
                     <div class="form-group">
-                        <label for="exampleTextarea">Masukan Detail Web</label>
-                        <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                        <label for="detailWeb">Masukan Detail Web</label>
+                        <textarea class="form-control" id="detailWeb" rows="3" onblur="validasiDetailWeb()"></textarea>
+                        <small id="detailWebError" class="form-text text-muted" style="display: none;"></small>
                     </div>
                     <?php } ?>
                     <div class="form-group">
-                        <label for="exampleInputFile">Foto Bukti Pembayaran</label>
-                        <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+                        <label for="buktiPembayaran">Foto Bukti Pembayaran</label>
+                        <input type="file" class="form-control-file" id="buktiPembayaran" aria-describedby="fileHelp" onblur="validasiBuktiPembayaran()">
+                        <small id="buktiPembayaranError" class="form-text text-muted" style="display: none;"></small>
                     </div>
                 </fieldset>
-                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#successModal">Simpan</button>
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" id="modalKonfirmasi" data-target="#successModal" onclick="konfirmasiPembayaran()">Simpan</button>
             </form>
         </div>
         <div class="col-3">
@@ -165,7 +167,7 @@
         <p>Langkah selanjutya akan kami kirim lewat email anda.</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="closeModal(event);">Tutup</button>
       </div>
     </div>
   </div>
